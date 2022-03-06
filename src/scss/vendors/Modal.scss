@@ -1,0 +1,171 @@
+.disable-scroll{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+}
+
+//============================================================
+
+.modal {
+    --width-modal-window: 400px;
+    --transition-window-time: 0.3s;
+    --transition-overlay-time: 0.3s;
+
+    z-index: 1000;
+
+    &__overlay {
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+        text-align: center;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: rgba(0, 0, 0, .5);
+        transition: opacity var(--transition-overlay-time), visibility var(--transition-overlay-time);
+
+        &::before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+    }
+
+    &__window {
+        display: none;
+        cursor: default;
+        margin: 50px auto;
+        background-color: #fff;
+        width: var(--width-modal-window);
+        padding: 0 10px;
+        border-radius: 20px;
+        vertical-align: middle;
+        text-align: left;
+
+        &.modal-open {
+            display: inline-block;
+        }
+
+//<MODAL WINDOW ANIMATION>================================================================
+
+        &.fadeIn {
+            transition: all var(--transition-window-time);
+        }
+
+        &.fadeInDown {
+            transform: translateY(-100%);
+            transition: all var(--transition-window-time) ease-in;
+        }
+
+        &.fadeInDownBig {
+            transform: translateY(-500%);
+            transition: all var(--transition-window-time) ease-in;
+        }
+
+        &.fadeInUp {
+            transform: translateY(100%);
+            transition: all var(--transition-window-time) ease-in;
+        }
+
+        &.fadeInUpBig {
+            transform: translateY(500%);
+            transition: all var(--transition-window-time) ease-in;
+        }
+
+        &.fadeInLeft {
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+        }
+
+        &.fadeInRight{
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+        }
+
+        &.fadeIn, &.fadeInUp, &.fadeInDown, &.fadeInLeft, &.fadeInRight &.fadeInUpBig, &.fadeInDownBig {
+            opacity: 0;
+            visibility: hidden;
+            
+            &.animate-open {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+        }
+
+//</MODAL WINDOW ANIMATION>================================================================
+
+    }
+
+//<MODAL ANIMATION>========================================================================
+
+    &.is-open {
+        .modal__overlay {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity var(--transition-overlay-time), visibility var(--transition-overlay-time);
+        }
+    }
+
+//</MODAL ANIMATION>=======================================================================
+
+}
+
+.modal-item {
+
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+    }
+
+    &__title {
+        font-size: 20px;
+    }
+
+    &__close {
+        background-color: #fff;
+        font-size: 16px;
+
+
+        &.focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__body {
+        padding: 20px 0;
+    }
+    &__footer {
+        border-top: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 10px 0;
+    }
+
+    &__button {
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+}

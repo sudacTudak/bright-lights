@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    @@include('./html/head.html', {"title": "Homepage"})
+        <link rel="stylesheet" href="css/index.min.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="content">
+                @@include('./html/header.html', {}) 
+                <main class="page">
+                    <img class="image" src="@img/hero-work-bg.png" alt="">
+                    <span>Привет!</span>
+                    <svg class='svg-test'>
+                        <use href='@sprite.svg#braces'></use>
+                    </svg>
+                    <button class='icon-menu '>
+                        <span></span>
+                    </button>
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"></div>
+                        </div>
+                    </div>
+                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque qui reprehenderit provident vitae itaque quisquam, rem ipsum fugit maiores odit.</span>
+                    <br>
+                    <span>Добро пожаловать в мою сборку GULP, под названием GULP-sudacTudak, в которой я тестирую различные плагины и в данном случае я тестирую плагин типографа gulp-typograf и несу всякую чушь просто потому что могу, потому что хочу и потому что так нужно</span>
+                </main>
+            </div>
+            @@include('./html/footer.html', {})
+        </div>
+        <script src="js/main.min.js"></script>
+    </body>
+</html>
