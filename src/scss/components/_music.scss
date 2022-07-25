@@ -1,0 +1,328 @@
+@use '../utils' as uts;
+
+.music {
+    padding-bottom: 100px;
+
+    background-color: var(--color-page-bg);
+
+    &__container {
+        display: flex;
+
+        @include uts.md1() {
+            position: relative;
+
+            display: block;
+        }
+    }
+
+    &__column {
+        flex: 0 1 50%;
+
+        &--left {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+            padding-left: 39px;
+
+            @include uts.md1() {
+                justify-content: flex-end;
+                margin-right: 0;
+                padding-left: 0;
+            }
+        }
+    }
+
+    &__image {
+        position: relative;
+
+        flex: 0 0 434px;
+
+        border-radius: 100%;
+
+        img {
+            position: relative;
+            z-index: 1;
+
+            display: block;
+            max-width: 100%;
+            object-fit: cover;
+
+            overflow: hidden;
+        }
+
+        &::before {
+            position: absolute;
+            top: 49%;
+            left: 50%;
+
+            width: 472px;
+            height: 472px;
+
+            background-color: rgba(var(--color-primary-rgb), 0.6);
+            border-radius: 100%;
+
+            transform: translate(-50%, -50%);
+
+            content: '';
+        }
+
+        &::after {
+            position: absolute;
+            top: 49%;
+            left: 50%;
+
+            width: 510px;
+            height: 510px;
+
+            background-color: rgba(var(--color-primary-rgb), 0.3);
+            border-radius: 100%;
+
+            transform: translate(-50%, -50%);
+
+            content: '';
+        }
+
+        @include uts.md1() {
+            display: none;
+        }
+    }
+
+    &__title {
+        margin-bottom: 58px;
+
+        @include uts.md2() {
+            margin-bottom: 40px;
+        }
+
+        @include uts.md3() {
+            margin-bottom: 30px;
+        }
+
+        @include uts.md4() {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__player {
+        margin-bottom: 50px;
+
+        @include uts.md2() {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__tracks {
+        margin-bottom: 45px;
+
+        @include uts.md2() {
+            margin-bottom: 30px;
+        }
+
+        @include uts.md3() {
+            margin-bottom: 20px;
+        }
+    }
+
+    @include uts.md2() {
+        padding-bottom: 60px;
+    }
+
+    @include uts.md3() {
+        padding-bottom: 50px;
+    }
+}
+
+.tracks {
+    list-style: none;
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 21px;
+        }
+    }
+}
+
+.track {
+    &__number {
+        margin-right: 17px;
+        padding-top: 5px;
+
+        color: rgba(var(--color-light-rgb), 0.5);
+        font-weight: 700;
+        font-size: uts.rem(14);
+        line-height: calc(21 / 14);
+
+        transition: color var(--transition-time) ease-in-out;
+
+        @include uts.md3() {
+            padding-top: 2px;
+        }
+
+        @include uts.md4() {
+            margin-right: 10px;
+
+            font-size: uts.rem(12);
+        }
+    }
+
+    &__title {
+        color: var(--color-light);
+        font-size: uts.rem(18);
+        line-height: calc(27 / 18);
+
+        transition: color var(--transition-time) ease-in-out;
+
+        @include uts.md3() {
+            font-size: uts.rem(16);
+        }
+
+        @include uts.md4() {
+            font-size: uts.rem(14);
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: flex-start;
+
+        text-align: left;
+
+        background-color: transparent;
+
+        &.focus-visible {
+            .track__number {
+                color: var(--color-primary);
+            }
+
+            .track__title {
+                border-bottom: 1px solid var(--color-primary);
+            }
+        }
+
+        &:hover {
+            .track__number {
+                color: var(--color-primary);
+            }
+        }
+
+        &:active {
+            .track__number {
+                color: var(--color-primary);
+            }
+
+            .track__title {
+                color: var(--color-primary);
+            }
+        }
+    }
+
+    &_active {
+        .track__title {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .track__number {
+            margin-right: 20px;
+
+            @include uts.md4() {
+                margin-right: 13px;
+            }
+        }
+    }
+}
+
+.follow-music {
+    display: flex;
+    align-items: center;
+
+    &__text {
+        margin-right: 46px;
+
+        color: var(--color-light);
+        font-weight: 600;
+        font-size: uts.rem(24);
+        line-height: 1.5;
+
+        @include uts.md2() {
+            margin-right: 30px;
+
+            font-size: uts.rem(20);
+        }
+
+        @include uts.md3() {
+            font-size: uts.rem(16);
+        }
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-right: 35px;
+
+            @include uts.md3() {
+                margin-right: 20px;
+            }
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+
+        color: var(--color-light);
+
+        transition:
+            border-bottom var(--transition-time) ease-in-out,
+            color var(--transition-time) ease-in-out;
+
+        &.focus-visible {
+            border-bottom: 1px solid var(--color-primary);
+        }
+
+        &:hover {
+            color: var(--color-primary);
+        }
+
+        &:active {
+            color: var(--color-primary-hover);
+        }
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+
+        svg {
+            display: block;
+            width: 20px;
+            height: 20px;
+
+            color: inherit;
+
+            fill: currentColor;
+        }
+
+        @include uts.md3() {
+            margin-right: 0;
+        }
+    }
+
+    &__social {
+        font-weight: 600;
+        font-size: uts.rem(14);
+        line-height: 1.5;
+
+        @include uts.md3() {
+            font-size: uts.rem(12);
+        }
+    }
+}

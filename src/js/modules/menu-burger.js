@@ -1,6 +1,8 @@
+import { openMenuTime } from './cssProperties.js';
+
+const header = document.querySelector('.header');
 const burgerBtn = document.querySelector('.icon-menu');
-const navBody = document.querySelector('.nav');
-const openMenuTime = 300;
+const navBody = document.querySelector('.menu-header');
 let isOpen = false;
 
 const lockPadding = () => {
@@ -49,11 +51,11 @@ const enableScroll = () => {
 
 const openMenu = () => {
     burgerBtn.setAttribute('disabled', 'true');
-    disableScroll();
     navBody.classList.add('is-open');
     burgerBtn.classList.add('--active');
 
     setTimeout(() => {
+        disableScroll();
         isOpen = true;
         burgerBtn.removeAttribute('disabled');
     }, openMenuTime)
@@ -63,11 +65,11 @@ const closeMenu = () => {
     burgerBtn.setAttribute('disabled', 'true');
     navBody.classList.remove('is-open');
     burgerBtn.classList.remove('--active');
+    enableScroll();
 
     setTimeout(() => {
         isOpen = false;
         burgerBtn.removeAttribute('disabled');
-        enableScroll();
     }, openMenuTime)
 }
 

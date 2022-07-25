@@ -1,7 +1,7 @@
 
 {
     "extends": [
-        "stylelint-config-standard",
+        "stylelint-config-standard-scss",
         "stylelint-config-rational-order"
     ],
     "plugins": [
@@ -16,6 +16,10 @@
             "empty-line-between-groups": true
         }],
         "indentation": 4,
-        "string-quotes": "single"
+        "string-quotes": "single",
+        "no-invalid-double-slash-comments": null,
+        "function-no-unknown": null,
+        "declaration-block-single-line-max-declarations": null,
+        "scss/at-mixin-argumentless-call-parentheses": null
     }
 }

@@ -1,0 +1,57 @@
+<section id="music" class="music" data-scroll-section>
+    <div class="music__container container">
+        <div class="music__column music__column--left">
+            <div class="music__image">
+                <img src="@img/lazy-placeholder.png" data-lazy-src="../img/music/01.png" alt="Bright Lights">
+            </div>
+        </div>
+        <div class="music__column music__column--right">
+            <h2 class="music__title title title--section" data-animation="title">Last tracks</h2>
+            <div class="music__player player">
+                <audio src="#" class="player__audio" data-pause></audio>
+                <button class="player__btn">
+                    <svg>
+                        <use href='@sprite.svg#play'></use>
+                    </svg>
+                </button>
+                <div class="player__bar">
+                    <div class="player__progress">
+                        <button class="player__current"></button>
+                    </div>
+                </div>
+                <div class="player__time time-audio">
+                    <span class="time-audio__current">00:47</span>
+                    <span class="time-audio__separator">-</span>
+                    <span class="time-audio__total"></span>
+                </div>
+            </div>
+            <ol class="music__tracks tracks">
+            </ol>
+            <div class="music__follow follow-music">
+                <span class="follow-music__text">Follow me:</span>
+                <ul class="follow-music__list">
+                    <li class="follow-music__item">
+                        <a href="#" class="follow-music__link">
+                            <div class="follow-music__icon">
+                                <svg>
+                                    <use href='@sprite.svg#spotify'></use>
+                                </svg>
+                            </div>
+                            <span class="follow-music__social">Spotify</span>
+                        </a>
+                    </li>
+                    <li class="follow-music__item">
+                        <a href="#" class="follow-music__link">
+                            <div class="follow-music__icon">
+                                <svg>
+                                    <use href='@sprite.svg#apple'></use>
+                                </svg>
+                            </div>
+                            <span class="follow-music__social">iTunes</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

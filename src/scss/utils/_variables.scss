@@ -1,24 +1,46 @@
-//ПЕРЕМЕННЫЕ>
-
-//РАЗМЕРЫ СЕТКИ
-
-$minwidth:320px;
-$mw:1170 + 30 + px;
-$md1:$mw+12;
-$md2:992.98;
-$md3:767.98;
-$md4:479.98;
-
-//РАЗМЕРЫ СЕТКИ
-
-//ПЕРЕМЕННЫЕ ПО УМОЛЧАНИЮ
-
-:root {
-    -var--color-light: #fff;
-    -var--color-black: #000;
-    -var--transition-time: 0.3s;
+// HexToRGB
+@function hexToRgb($hex) {
+    @return red($hex), green($hex), blue($hex);
 }
 
-//ПЕРЕМЕННЫЕ ПО УМОЛЧАНИЮ
+// ПЕРЕМЕННЫЕ>
 
-//</ПЕРЕМЕННЫЕ>
+// РАЗМЕРЫ СЕТКИ
+
+$minwidth: 320px;
+$mw: 1110 + 30;
+$md1: $mw + 12;
+$md2: 992.98;
+$md3: 767.98;
+$md4: 479.98;
+
+// РАЗМЕРЫ СЕТКИ
+
+// ПЕРЕМЕННЫЕ ПО УМОЛЧАНИЮ
+
+$colors : (
+    'light': #fff,
+    'black' : #000,
+    'primary' : #7a66cc,
+    'page-bg' : #1c1b21,
+    'primary-hover': #6e4eec,
+    'primary-active': #603bf8,
+);
+
+:root {
+    @each $key, $value in $colors {
+        --color-#{$key} : #{$value};
+    }
+
+    @each $key, $value in $colors {
+        --color-#{$key}-rgb : #{hexToRgb($value)};
+    }
+
+    --transition-time: 0.3s;
+    --open-menu-time: 0.5s;
+    --animation-time: 1s;
+}
+
+// ПЕРЕМЕННЫЕ ПО УМОЛЧАНИЮ
+
+// </ПЕРЕМЕННЫЕ>

@@ -1,12 +1,11 @@
 @use 'global';
 @use 'utils' as uts;
 
-body {
-    background-color: #aaa;
-}
+@use '../../node_modules/swiper/swiper.min';
 
-span {
-    position: relative;
-    top: 0;
-    z-index: 1;
-}
+@use './components/hero';
+@use './components/news';
+@use './components/about';
+@use './components/music';
+@use './components/media';
+@use './components/tours';

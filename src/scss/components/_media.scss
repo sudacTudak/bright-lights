@@ -1,0 +1,131 @@
+@use '../utils' as uts;
+
+.media {
+    padding: 81px 0 80px;
+
+    background-color: var(--color-page-bg);
+
+    &__container {
+        display: grid;
+        grid-template-areas:
+            'img1 img2 img3 img5'
+            'img1 img4 img4 img5';
+        gap: 30px;
+
+        @include uts.md2() {
+            gap: 15px;
+        }
+
+        // @include uts.md3() {
+        //     max-width: initial;
+        // }
+
+        @include uts.md3() {
+            grid-template-areas:
+                'img4 img4'
+                'img2 img3'
+                'img1 img5'
+                'img1 img5';
+        }
+    }
+
+    &__image {
+        position: relative;
+
+        @include uts.border-radius-big;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            @include uts.md3() {
+                position: initial;
+
+                height: initial;
+            }
+        }
+
+        &_1 {
+            grid-area: img1;
+
+            padding-bottom: 196%;
+
+            @include uts.md3() {
+                padding-bottom: 0;
+            }
+        }
+
+        &_2 {
+            grid-area: img2;
+        }
+
+        &_3 {
+            grid-area: img3;
+        }
+
+        &_4 {
+            grid-area: img4;
+        }
+
+        &_5 {
+            grid-area: img5;
+
+            padding-bottom: 196%;
+
+            @include uts.md3() {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+    &__label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+        color: var(--color-primary);
+        font-weight: 700;
+        font-size: uts.rem(24);
+        line-height: 1.5;
+        text-align: center;
+
+        background: linear-gradient(0deg, rgba(28, 27, 33, 0.8), rgba(28, 27, 33, 0.8));
+
+        @include uts.md2() {
+            font-size: uts.rem(18);
+        }
+
+        @include uts.md3() {
+            font-size: uts.rem(14);
+        }
+    }
+
+    @include uts.md1() {
+        padding: 60px 0;
+    }
+
+    @include uts.md2() {
+        padding: 50px 0;
+    }
+
+    @include uts.md3() {
+        padding: 40px 0;
+    }
+
+    @include uts.md4() {
+        padding: 40px 0 30px;
+    }
+}

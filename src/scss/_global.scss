@@ -1,53 +1,137 @@
-//<ОБНУЛЯЮЩИЙ СТИЛЬ>
+// <ОБНУЛЯЮЩИЙ СТИЛЬ>
+
 @use 'nullstyle';
-//</ОБНУЛЯЮЩИЙ СТИЛЬ>
 
-//<ПОДКЛЮЧЕНИЕ ШРИФТОВ>
+// </ОБНУЛЯЮЩИЙ СТИЛЬ>
+
+// <ПОДКЛЮЧЕНИЕ ШРИФТОВ>
+
 @use 'fonts/fonts';
-//</ПОДКЛЮЧЕНИЕ ШРИФТОВ>
 
-//<ПОДКЛЮЧЕНИЕ СТИЛЕЙ-ШАБЛОНОВ, UI>
+// </ПОДКЛЮЧЕНИЕ ШРИФТОВ>
+
+// <ПОДКЛЮЧЕНИЕ СТИЛЕЙ-ШАБЛОНОВ, UI>
+
 @use 'components';
-//</ПОДКЛЮЧЕНИЕ СТИЛЕЙ-ШАБЛОНОВ, UI>
 
-//<ПОДКЛЮЧЕНИЕ МИКСИНОВ, ПЕРЕМЕННЫХ>
+// </ПОДКЛЮЧЕНИЕ СТИЛЕЙ-ШАБЛОНОВ, UI>
+
+// <ПОДКЛЮЧЕНИЕ МИКСИНОВ, ПЕРЕМЕННЫХ>
+
 @use 'utils' as uts;
-//</ПОДКЛЮЧЕНИЕ МИКСИНОВ, ПЕРЕМЕННЫХ>
 
-//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ БИБЛИОТЕК>
+// </ПОДКЛЮЧЕНИЕ МИКСИНОВ, ПЕРЕМЕННЫХ>
+
+// <ПОДКЛЮЧЕНИЕ ФАЙЛОВ БИБЛИОТЕК>
+
 @use 'vendors';
-//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ БИБЛИОТЕК>
 
+// </ПОДКЛЮЧЕНИЕ ФАЙЛОВ БИБЛИОТЕК>
 
 @use 'header';
 @use 'footer';
 
-//<ПЕРЕМЕННЫЕ>
-$fontfamily: "Times New Roman", sans-serif;
-//</ПЕРЕМЕННЫЕ>
 
+// <ПЕРЕМЕННЫЕ>
 
+$fontfamily: "Poppins", sans-serif;
 
-//<ОБОЛОЧКА>
-.wrapper {width: 100%; min-height: 100%; overflow: hidden; display: flex; flex-direction: column;}
-.content {flex: 1 1 auto}
-//</ОБОЛОЧКА>
-
-
+// </ПЕРЕМЕННЫЕ>
 
 //<ОСНОВНАЯ СЕТКА>
-.container {max-width: uts.$var-mw; margin: 0 auto; width: 100%; padding: 0 15px;
-	@media (max-width: (uts.$var-md1 + px)) {max-width: 970px;}
-	@media (max-width: (uts.$var-md2 + px)) {max-width: 750px;}
-	@media (max-width: (uts.$var-md3 + px)) {max-width: 476px;}
-	@media (max-width: (uts.$var-md4 + px)) {max-width: none;padding:0 10px;}
+
+.container {max-width: uts.$mw + px; margin: 0 auto; width: 100%; padding: 0 15px;
+    @media (max-width: (uts.$md1 + px)) {max-width: 970px;}
+    @media (max-width: (uts.$md2 + px)) {max-width: 750px;}
+    @media (max-width: (uts.$md3 + px)) {max-width: 476px;}
+    @media (max-width: (uts.$md4 + px)) {max-width: none;padding:0 10px;}
 }
 
-//</ОСНОВНАЯ СЕТКА>
+// </ОСНОВНАЯ СЕТКА>
 
+// <ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ>
+
+.disable-scroll {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.animated-title {
+    animation: section-title var(--animation-time) ease-in-out 0s 1;
+}
+
+.animated-up {
+    animation: animation-up var(--animation-time) ease-in-out 0s 1;
+}
+
+.animated-right {
+    animation: animation-right var(--animation-time) ease-in-out 0s 1;
+}
+
+.animated-hidden {
+    visibility: hidden;
+}
+
+@keyframes section-title {
+    0% {
+        transform: translateY(30%);
+        opacity: 0;
+    }
+
+    80% {
+        transform: translateY(-5%);
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes animation-up {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes animation-right {
+    0% {
+        transform: translateX(10%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+// </ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ>
 
 body {
-	font-family: $fontfamily;
     font-weight: 400;
+    font-family: $fontfamily;
+    background-color: var(--color-page-bg);
 }
 

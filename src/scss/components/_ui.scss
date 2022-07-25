@@ -1,1 +1,300 @@
-//<UI>==============================
+@use '../utils' as uts;
+
+.logo {
+    display: flex;
+    align-items: flex-end;
+
+    &__icon {
+        flex: 0 0 60px;
+        margin-right: 20px;
+
+        transform: translateY(5px);
+
+        img {
+            max-width: 100%;
+            object-fit: cover;
+        }
+
+        @include uts.md2() {
+            margin-right: 15px;
+        }
+
+        @include uts.md3() {
+            margin-right: 10px;
+        }
+
+        @include uts.md4() {
+            margin-right: 5px;
+        }
+    }
+
+    &__text {
+        flex: 0 0 143px;
+
+        img {
+            max-width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.title {
+    color: var(--color-light);
+    font-weight: 700;
+    font-size: uts.rem(48);
+    line-height: 72px;
+
+    &--section {
+        padding-left: 95px;
+
+        background: url('../img/icons/visualisator.svg') top 20px left no-repeat;
+
+        @include uts.md2() {
+            padding-left: 80px;
+        }
+
+        @include uts.md3() {
+            padding-left: 65px;
+
+            background-size: 55px 30px;
+        }
+    }
+
+    @include uts.md2() {
+        font-size: uts.rem(40);
+    }
+
+    @include uts.md3() {
+        font-size: uts.rem(30);
+    }
+
+    @include uts.md4() {
+        font-size: uts.rem(20);
+    }
+}
+
+.player {
+    display: flex;
+    align-items: center;
+
+    &__btn {
+        position: relative;
+
+        width: 25px;
+        height: 22px;
+
+        color: var(--color-light);
+
+        background-color: transparent;
+
+        transition: color var(--transition-time) ease-in-out;
+
+        svg {
+            position: relative;
+            z-index: 1;
+
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            color: inherit;
+
+            fill: currentColor;
+        }
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            z-index: 0;
+
+            width: 40px;
+            height: 40px;
+
+            border-radius: 100%;
+
+            transform: translate(-25%, -50%);
+
+            transition:
+                background-color var(--transition-time) ease-in-out,
+                box-shadow var(--transition-time) ease-in-out;
+
+            content: '';
+
+            @include uts.md4() {
+                width: 34px;
+                height: 34px;
+            }
+        }
+
+        &.focus-visible {
+            &::before {
+                background-color: rgba(var(--color-black), 0);
+                box-shadow: 0 0 7px 2px var(--color-primary);
+            }
+        }
+
+        &:hover {
+            color: var(--color-primary);
+        }
+
+        &:active {
+            color: var(--color-primary);
+
+            &::before {
+                background-color: rgba(var(--color-primary-rgb), 0.6);
+            }
+        }
+
+        &.--pause {
+            &:before {
+                transform: translate(-19%, -50%);
+            }
+        }
+
+        @include uts.md3() {
+            order: 1;
+        }
+
+        @include uts.md4() {
+            width: 22px;
+            height: 19px;
+        }
+    }
+
+    &__bar {
+        flex: 1 1 auto;
+        height: 2px;
+
+        margin: 0 45px;
+
+        background-color: var(--color-light);
+        border-radius: 5px;
+        cursor: pointer;
+
+        @include uts.md3() {
+            flex: 1 1 100%;
+            order: 3;
+            height: 6px;
+            margin: 0;
+            margin-top: 40px;
+        }
+
+        @include uts.md4() {
+            margin-top: 30px;
+        }
+    }
+
+    &__progress {
+        position: relative;
+
+        width: 0px;
+        height: 100%;
+
+        background-color: var(--color-primary);
+        border-radius: 5px;
+
+        transition: width 0.1s ease-in-out;
+    }
+
+    &.--playing {
+        .player__current {
+            position: absolute;
+            top: 2px;
+            right: 0;
+            z-index: 1;
+
+            width: 20px;
+            height: 40px;
+
+            transform: translate(50%, -50%);
+
+            background-color: transparent;
+
+            &::before {
+                position: absolute;
+                top: 50%;
+                right: 50%;
+                z-index: 2;
+
+                display: block;
+
+                width: 2px;
+                height: 20px;
+
+                background-color: var(--color-primary);
+
+                transform: translate(50%, -50%);
+
+                content: '';
+
+                @include uts.md3() {
+                    width: 4px;
+                }
+            }
+
+            &:hover,
+            &:active {
+                &::before {
+                    width: 3px;
+                }
+            }
+
+            @include uts.md3() {
+                top: 4px;
+            }
+        }
+    }
+
+    &__time {
+        flex: 0 1 110px;
+
+        @include uts.md3() {
+            order: 2;
+        }
+
+        @include uts.md4() {
+            flex: initial;
+        }
+    }
+
+    @include uts.md3() {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
+.time-audio {
+    overflow-x: hidden;
+
+    color: var(--color-light);
+    font-weight: 500;
+    font-size: uts.rem(18);
+    line-height: calc(27 / 18);
+
+    white-space: nowrap;
+
+    &__separator {
+        margin: 0 -4px;
+
+        @include uts.md4() {
+            margin: 0 -2px;
+        }
+    }
+
+    &__current,
+    &__total {
+        display: inline-block;
+        min-width: 50px;
+
+        @include uts.md4() {
+            min-width: 40px;
+        }
+    }
+
+    @include uts.md4() {
+        font-size: uts.rem(14);
+    }
+}
+
+

@@ -1,0 +1,326 @@
+@use '../utils' as uts;
+
+.about {
+    padding-top: 100px;
+    padding-bottom: 265px;
+
+    background-color: var(--color-page-bg);
+
+    &__title {
+        margin-bottom: 60px;
+
+        @include uts.md2() {
+            margin-bottom: 30px;
+        }
+
+        @include uts.md3() {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__biography {
+        margin-bottom: 235px;
+
+        @include uts.md1() {
+            margin-bottom: 200px;
+        }
+
+        @include uts.md2() {
+            margin-bottom: 150px;
+        }
+
+        @include uts.md3() {
+            margin-bottom: 100px;
+        }
+
+        @include uts.md4() {
+            margin-bottom: 60px;
+        }
+    }
+
+    @include uts.md1() {
+        padding-top: 80px;
+        padding-bottom: 200px;
+    }
+
+    @include uts.md2() {
+        padding-top: 60px;
+        padding-bottom: 120px;
+    }
+
+    @include uts.md3() {
+        padding-top: 30px;
+        padding-bottom: 80px;
+    }
+
+    @include uts.md4() {
+        padding-top: 10px;
+        padding-bottom: 60px;
+    }
+}
+
+.biography {
+    display: grid;
+    grid-template: auto / repeat(12, 1fr);
+    gap: 10%;
+
+    &__column {
+        &--left {
+            grid-column: 6 span;
+
+            @include uts.md3() {
+                order: 2;
+            }
+        }
+
+        &--right {
+            position: relative;
+
+            grid-column: 5 span;
+
+            @include uts.md3() {
+                order: 1;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    &__text {
+        max-width: 540px;
+
+        margin-bottom: 84px;
+
+        color: rgba(var(--color-light-rgb), 0.7);
+        font-size: uts.rem(16);
+        line-height: 1.5;
+
+        p {
+            &:not(:last-child) {
+                margin-bottom: 23px;
+
+                @include uts.md2() {
+                    margin-bottom: 18px;
+                }
+
+                @include uts.md3() {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        @include uts.md2() {
+            margin-bottom: 30px;
+
+            font-size: uts.rem(14);
+        }
+
+        @include uts.md3() {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__facts {
+        margin: -14px -8px;
+    }
+
+    &__image {
+        @include uts.border-radius-big;
+
+        max-width: 350px;
+        max-height: 400px;
+
+        overflow: hidden;
+
+        &--main {
+            position: absolute;
+            top: -72px;
+            left: 0;
+            z-index: 1;
+
+            @include uts.md2() {
+                left: -40px;
+            }
+
+            @include uts.md3() {
+                top: -50px;
+                right: 50px;
+                left: initial;
+            }
+        }
+
+        &--bg {
+            position: relative;
+            top: -5px;
+
+            margin-left: auto;
+
+            img {
+                opacity: 0.3;
+            }
+        }
+
+        img {
+            max-width: 100%;
+            object-fit: cover;
+        }
+
+        @include uts.md2() {
+            max-width: 288px;
+            padding-top: 75px;
+        }
+
+        @include uts.md3() {
+            max-width: 200px;
+            padding-top: 20px;
+        }
+    }
+
+    @include uts.md3() {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.facts-about {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        flex: 0 0 50%;
+        padding: 14px 8px;
+
+        @include uts.md3() {
+            flex: 1 1 100%;
+            padding: 0;
+            padding-left: 10px;
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    &__text {
+        display: block;
+        padding-bottom: 5px;
+        padding-left: 50px;
+
+        color: var(--color-light);
+        font-weight: 600;
+        font-size: uts.rem(18);
+        line-height: calc(27 / 18);
+
+        background: url('../img/icons/rectangle-round.svg') top left no-repeat;
+
+        @include uts.md2() {
+            padding-left: 35px;
+
+            font-size: uts.rem(14);
+
+            background-size: 26px 26px;
+        }
+    }
+}
+
+.quote-about {
+    &__content {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+
+        border: 1px solid var(--color-light);
+
+        @include uts.border-radius-big;
+
+        @include uts.md3() {
+            flex-direction: column-reverse;
+            align-items: flex-end;
+        }
+    }
+
+    &__info {
+        padding: 49px 10px 50px 80px;
+
+        @include uts.md3() {
+            padding: 20px;
+        }
+    }
+
+    &__item {
+        position: relative;
+
+        max-width: calc(50% + 10px);
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+
+        color: var(--color-light);
+        font-size: uts.rem(18);
+        line-height: calc(27 / 18);
+
+        background: url('../img/icons/braces.svg') top 2px left -1px / 103px 92px no-repeat;
+
+        &::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            display: block;
+            width: 100%;
+            height: 1px;
+
+            background-color: rgba(var(--color-light-rgb), 0.6);
+
+            content: '';
+        }
+
+        @include uts.md3() {
+            max-width: initial;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+
+            font-size: uts.rem(16);
+
+            background: initial;
+        }
+    }
+
+    &__source {
+        color: var(--color-primary);
+        font-weight: 700;
+        font-size: uts.rem(18);
+        line-height: calc(27 / 18);
+
+        @include uts.md3() {
+            font-size: uts.rem(14);
+        }
+    }
+
+    &__image {
+        position: absolute;
+        right: calc(80 / 1110) * 100%;
+
+        overflow: hidden;
+
+        @include uts.border-radius-big;
+
+        img {
+            max-width: 100%;
+            object-fit: cover;
+        }
+
+        @include uts.md1() {
+            right: 20px;
+        }
+
+        @include uts.md2() {
+            max-width: calc(250 / 718 * 100%);
+        }
+
+        @include uts.md3() {
+            position: static;
+            float: left;
+            margin-right: 10px;
+        }
+    }
+}

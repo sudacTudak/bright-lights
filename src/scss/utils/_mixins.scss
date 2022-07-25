@@ -1,41 +1,86 @@
+@use '_variables.scss' as var;
+@use 'sass:math';
+
 // Fonts
 @mixin font-face($font-family, $url, $weight, $style) {
     @font-face {
-        font-family: "#{$font-family}";
-        src: local('#{$font-family}'), local('#{$url}'), 
-            url('../fonts/#{$url}.woff2') format("woff2"),
-            url('../fonts/#{$url}.woff') format("woff");
-        font-weight: #{$weight};
-        font-display: swap;
+        font-weight: $weight;
+        font-family: '#{$font-family}';
         font-style: $style;
+        font-display: swap;
+        src:
+            local('#{$font-family}'),
+            local('#{$url}'),
+            url('../fonts/#{$url}.woff2') format('woff2'),
+            url('../fonts/#{$url}.woff') format('woff');
     }
 }
 
 // Flex
-@mixin flex-ver-center() {display: flex; align-items: center;}
-@mixin flex-hor-center() {display: flex; justify-content: center;}
-@mixin flex-all-center() {display: flex; justify-content: center; align-items: center;}
-@mixin flex-col-hor-center() {display: flex; flex-direction:column; align-items: center;}
-@mixin flex-col-ver-center() {display: flex; flex-direction:column; justify-content: center;}
+@mixin flex-ver-center() { display: flex; align-items: center; }
+@mixin flex-hor-center() { display: flex; justify-content: center; }
+@mixin flex-all-center() { display: flex; align-items: center; justify-content: center; }
+@mixin flex-col-hor-center() { display: flex; flex-direction: column; align-items: center; }
+@mixin flex-col-ver-center() { display: flex; flex-direction: column; justify-content: center; }
 
+// media
+@mixin md1() {
+    @media (max-width: (var.$md1 + px)) {
+        @content;
+    }
+}
+
+@mixin md2() {
+    @media (max-width: (var.$md2 + px)) {
+        @content;
+    }
+}
+
+@mixin md3() {
+    @media (max-width: (var.$md3 + px)) {
+        @content;
+    }
+}
+
+@mixin md4() {
+    @media (max-width: (var.$md4 + px)) {
+        @content;
+    }
+}
 
 // Percent
 @function percent($px, $from) {
-	$result: math.div($px, $from) * 100%;
-	@return $result;
+    $result: math.div($px, $from) * 100%;
+
+    @return $result;
 }
 
 // REM
 @function rem($px) {
-	$result: math.div($px, 16) + rem;
-	@return $result;
+    $result: math.div($px, 16) + rem;
+
+    @return $result;
 }
 
 // EM
 @function em($px, $current: 16) {
-	$result: math.div($px, $current) + em;
-	@return $result;
+    $result: math.div($px, $current) + em;
+
+    @return $result;
 }
 
+// border-radius
+@mixin border-radius-big() {
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
 
+@mixin border-radius-medium() {
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 
+@mixin border-radius-small() {
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
